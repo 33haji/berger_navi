@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: berger_navi_production
-  username: berger_navi
-  password: <%= ENV['BERGER_NAVI_DATABASE_PASSWORD'] %>
+  database: heroku_604214bbb311c13
+  username: bd94156bf3a587
+  password: <%= ENV['3328d662'] %>
