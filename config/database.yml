@@ -13,13 +13,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: 5
-  username: root
-  password:
+  username: sasanuma
+  password: sasa0828
   socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: berger_navi_development
+  database: berger_navi_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
