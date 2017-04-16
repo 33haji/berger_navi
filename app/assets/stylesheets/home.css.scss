@@ -1,11 +1,8 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 $white: #fff;
 $black: #000;
 $green: #00AA00;
+$gray: #C0C0C0;
 
-/* home画面 */
 .home {
   .content {
     padding: 15% 0 18% 0;
@@ -15,34 +12,5 @@ $green: #00AA00;
       color: $black;
       font-size: 36px;
     }
-  }
-}
-
-/* header */
-header {
-  background-color: $white;
-  text-align: center;
-  ul {
-    li{
-      color: $green;
-    }
-  }
-  .dropdown:hover > .dropdown-menu{
-  display: block;
-  }
-  .logout-button {
-    float: right;
-    margin-top: -5px;
-  }
-}
-
-/* footer */
-footer {
-  border-top: 1px solid #eaeaea;
-  margin-top: 45px;
-  padding-top: 10px;
-  ul {
-    float: left;
-    list-style: none;
   }
 }

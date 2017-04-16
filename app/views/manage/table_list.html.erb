@@ -1,0 +1,21 @@
+<% provide(:title, 'Tables') %>
+<div class="container">
+  <h1>Table一覧</h1>
+
+  <div class="row">
+    <table class="table table-bordered table-striped" style="margin-top: 30px;">
+      <tr>
+        <th width="100%">テーブル名</th>
+      </tr>
+      <% @table_list.each do |table| %>
+      <% next if table == @table_list.first %>
+        <tr>
+          <td>
+            <%= link_to table, controller: "manage", action: "column_list", table: table %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+</div>

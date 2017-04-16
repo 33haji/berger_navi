@@ -1,16 +1,17 @@
-<header class="navbar navbar-fixed-top">
-  <div class="container">
-    <% if logged_in? %>
-      <%= button_to 'Logout', admin_login_logout_path, class: 'btn btn-warning logout-button' %>
-    <% end %>
-    <h1>humnavi</h1>
-    <nav>
-      <ul class="nav navbar-nav navbar-left">
-        <li><%= link_to "HOME", root_path %></li>
-        <% if logged_in? %>
-          <li><%= link_to "TABLES", manage_table_list_path %></li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
+<header>
+  <nav class="navbar">
+    <div class="container">
+      <% if logged_in? %>
+        <%= button_to 'Logout', admin_login_logout_path, class: 'btn btn-warning logout-button' %>
+      <% end %>
+      <h1>humnavi</h1>
+      <% if logged_in? %>
+        <nav>
+          <ul class="nav navbar-nav navbar-left">
+            <li><%= link_to "TABLES", manage_table_list_path %></li>
+          </ul>
+        </nav>
+      <% end %>
+    </div>
+  </nav>
 </header>

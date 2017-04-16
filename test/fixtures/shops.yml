@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: shops
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)      not null
+#  rate        :float(24)
+#  area        :string(255)
+#  address     :string(255)
+#  latitude    :float(24)
+#  longitude   :float(24)
+#  url         :string(255)
+#  comment     :text(65535)
+#  image1      :string(255)
+#  image2      :string(255)
+#  image3      :string(255)
+#  delete_flag :boolean          default("0")
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value
