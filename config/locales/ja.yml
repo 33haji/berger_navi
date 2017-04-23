@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+    attributes:
+      shop:
+        name: 店名
+        rate: 評価
+        area: 地域

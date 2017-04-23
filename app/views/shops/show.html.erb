@@ -1,0 +1,59 @@
+<% provide(:title, 'SHOP詳細') %>
+<div class="container">
+  <div class="shop-show">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="title"><%= @shop.name %></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="body">
+          <div class="column-name">評価</div>
+          <%= @shop.rate %>
+          <div class="column-name">地域</div>
+          <%= @shop.area %>
+          <div class="column-name">住所</div>
+          <%= @shop.address %>
+          <div class="column-name">緯度</div>
+          <%= @shop.latitude %>
+          <div class="column-name">経度</div>
+          <%= @shop.longitude %>
+          <div class="column-name">URL</div>
+          <%= @shop.url %>
+          <div class="column-name">コメント</div>
+          <%= markdown(@shop.comment).html_safe %>
+          <div class="column-name">地図</div>
+          <div id="map"></div>
+          <script type="text/javascript">
+              handler = Gmaps.build('Google');
+              handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+                markers = handler.addMarkers(<%=raw @map.to_json %>);
+                handler.bounds.extendWith(markers);
+                handler.fitMapToBounds();
+                handler.getMap().setZoom(15);
+              });
+          </script>
+          <div class="column-name">画像</div>
+          <% if @shop.image1? %>
+            <div class="image">
+              <%= image_tag(@shop.image1.url, class: "shop-image", align: "center") %>
+            </div>
+          <% end %>
+          <% if @shop.image2? %>
+            <div class="image">
+              <%= image_tag(@shop.image2.url, class: "shop-image", align: "center") %>
+            </div>
+          <% end %>
+          <% if @shop.image3? %>
+            <div class="image">
+              <%= image_tag(@shop.image3.url, class: "shop-image", align: "center") %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div><%= link_to "SHOP一覧", shops_path %></div>
+  </div>
+</div>

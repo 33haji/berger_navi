@@ -20,5 +20,19 @@
 #
 
 class Shop < ApplicationRecord
-  mount_uploader :image, ImageUploader
+  mount_uploader :image1, ImageUploader
+  mount_uploader :image2, ImageUploader
+  mount_uploader :image3, ImageUploader
+  geocoded_by :address
+  after_validation :geocode
+
+  attr_accessor :new_area, :remove_image1, :remove_image2, :remove_image3
+
+  validates :name, presence: true
+  validates :rate, presence: true, numericality: true
+  validates :area, presence: true, if: :new_area_blank?
+
+  def new_area_blank?
+    new_area.blank?
+  end
 end

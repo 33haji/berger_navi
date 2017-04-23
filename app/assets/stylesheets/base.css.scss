@@ -1,16 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "config";
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-
-$white: #fff;
-$black: #000;
-$green: #00AA00;
-$gray: #C0C0C0;
 
 .debug_dump {
   clear: both;
@@ -24,7 +20,7 @@ $gray: #C0C0C0;
 header {
   background-color: $white;
   text-align: center;
-  border-bottom: medium solid $gray;
+  border-bottom: thin solid $gray;
   .navbar {
     margin-bottom: 0;
   }
@@ -52,4 +48,18 @@ footer {
     float: left;
     list-style: none;
   }
+}
+
+/* button */
+.btn {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* markdownのcode記法のcss */
+code {
+  color: $orange;
+  font-size: 120%;
+  font-weight: bold;
+  background-color: inherit;
 }

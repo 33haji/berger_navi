@@ -9,4 +9,8 @@ Rails.application.routes.draw do
     get :table_list
     get :column_list
   end
+
+  resources :shops do
+    patch 'delete', :on => :member
+  end
 end

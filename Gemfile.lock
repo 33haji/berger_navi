@@ -87,8 +87,10 @@ GEM
     faraday_middleware (0.9.2)
       faraday (>= 0.7.4, < 0.10)
     ffi (1.9.18)
+    geocoder (1.4.3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     hashie (3.5.5)
     http (1.0.4)
       addressable (~> 2.3)
@@ -176,6 +178,9 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.3)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -269,6 +274,8 @@ DEPENDENCIES
   chartkick
   coderay
   coffee-rails (~> 4.2)
+  geocoder
+  gmaps4rails
   instagram!
   jbuilder (~> 2.5)
   jquery-rails
@@ -279,6 +286,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 3.0)
   rails (~> 5.0.2)
+  rails-i18n
   rails_12factor
   ransack
   redcarpet (~> 2.3.0)
