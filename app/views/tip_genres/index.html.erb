@@ -1,0 +1,31 @@
+<% provide(:title, 'ヒント') %>
+<div class="tip-genres">
+  <div class="container">
+    <span><h1 class="title">See tips</h1></span>
+    <% @tip_genres.each_with_index do |genre, i| %>
+      <% if i % 3 == 0 %>
+        <div class="row">
+          <div class="col-md-2 col-md-offset-2">
+              <a href="/tip_genres/<%= genre.id %>">
+                <%= image_tag(genre.image.url, class: "img-responsive") %>
+                <h3 class="genre-caption"><%= genre.name %></h3>
+              </a>
+          </div>
+      <% else %>
+          <div class="col-md-2 col-md-offset-1">
+              <a href="/tip_genres/<%= genre.id %>">
+                <%= image_tag(genre.image.url, class: "img-responsive") %>
+                <h3 class="genre-caption"><%= genre.name %></h3>
+              </a>
+          </div>
+      <% end %>
+      <% if i % 3 == 2 || i == @tip_genres.length - 1 %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <% if logged_in? %>
+    <%= link_to 'Add genre', new_tip_genre_url, class: "btn btn-warning btn-lg btn-block genre-btn" %>
+    <%= link_to 'Add tip', new_tip_url, class: "btn btn-danger btn-lg btn-block tip-btn" %>
+  <% end %>
+</div>

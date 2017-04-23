@@ -1,0 +1,55 @@
+@import "config";
+
+.tips {
+  background-color: #424242;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  .title {
+    color: $white;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .form {
+    #tip_genre_id {
+      color: #000;
+    }
+  }
+}
+
+.show {
+  .genre-div {
+    background: #008000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10%;
+    .genre-name {
+      padding-left: 10px;
+      text-align: center;
+      color: $white;
+      font-size: x-large;
+      vertical-align: middle;
+    }
+  }
+  .tip-show-title {
+    background: #4caf50;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10%;
+    padding-right: 10%;
+    h3 {
+      color: $white;
+    }
+  }
+  .content {
+    padding-top: 50px;
+    padding-bottom: 30px;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: large;
+  }
+  .btns {
+    padding-left: 10%;
+  }
+}

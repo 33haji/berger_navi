@@ -1,0 +1,16 @@
+<%= form_for(@tip) do |f| %>
+  <%= f.label :genre_id, "Genre"%>
+  <br>
+  <%= f.collection_select :genre_id, TipGenre.all, :id, :name, class: 'form-control', required: true, :include_blank => '選択してください' %>
+  
+  <br><br>
+  <%= f.label :title, "Title"%>
+  <%= f.text_field :title, class: 'form-control', required: true %>
+  
+  <br>
+  <%= f.label :detail, "Content"%>
+  <%= f.text_area :detail, class: 'form-control', required: true, size: "100x10" %>
+
+  <%= f.submit "Register", class: "btn btn-primary" %>
+  <%= link_to "Back", tip_genres_url, class: "btn btn-default" %>
+<% end %>

@@ -1,0 +1,16 @@
+<%= form_for(@tip_genre) do |f| %>
+  <%= f.label :name, "Genre"%>
+  <%= f.text_field :name, class: 'form-control', required: true %>
+  
+  <% if @tip_genre.image? %>
+    <div class="thumbnail">
+      <%= image_tag @tip_genre.image.url %>
+    </div>
+  <% end %><br>
+  <%= f.label :image, "Image" %><br>
+  <%= f.file_field :image , required: true %>
+  <%= f.hidden_field :image_cache %>
+
+  <%= f.submit "Register", class: "btn btn-primary" %>
+  <%= link_to "Back", tip_genres_url, class: "btn btn-default" %>
+<% end %>

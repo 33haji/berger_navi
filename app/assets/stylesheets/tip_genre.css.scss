@@ -1,0 +1,55 @@
+@import "config";
+
+.tip-genres {
+  background-color: #424242;
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  .title {
+    color: $white;
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .genre-caption {
+    color: #AAAAAA;
+    text-align: center;
+    padding-bottom: 80px;
+  }
+
+  .genre-addition {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .genre-btn {
+    margin-top: 80px;
+    margin-bottom: 50px;
+  }
+
+  .tip-btn {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .show {
+    .title-div {
+      text-align:center;
+      margin-bottom: 80px;
+      .title {
+        font-size: xx-large;
+        margin-left: 20px;
+        vertical-align: middle;
+      }
+    }
+    .tips-list {
+      .tip-list-btn {
+        color: #C0C0C0;
+      }
+      .tip-list-btn:hover {
+        background: #008000;
+        color: #fff;
+      }
+    }
+  }
+}

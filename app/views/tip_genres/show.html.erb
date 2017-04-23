@@ -1,0 +1,17 @@
+<% provide(:title, "Tips一覧 [#{@tip_genre.name}]") %>
+<div class="tip-genres">
+  <div class="show">
+    <div class="container">
+      <div class="title-div">
+        <%= image_tag(@tip_genre.image.url, width: '8%') %>
+        <span class="title"><strong>Tips [<%= @tip_genre.name %>]</strong></span>
+      </div>
+      
+      <div class="tips-list">
+        <% @tips.each do |tip| %>
+          <%= link_to tip.title, tip_path(tip), class: "btn btn-lg btn-block tip-list-btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

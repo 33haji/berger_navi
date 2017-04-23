@@ -13,4 +13,10 @@ Rails.application.routes.draw do
   resources :shops do
     patch 'delete', :on => :member
   end
+
+  resources :tips do
+    patch 'delete', :on => :member
+  end
+
+  resources :tip_genres
 end
