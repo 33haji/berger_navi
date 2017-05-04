@@ -10,7 +10,8 @@
 #  latitude    :float(24)
 #  longitude   :float(24)
 #  url         :string(255)
-#  comment     :text(65535)
+#  comment     :string(255)
+#  detail      :text(65535)
 #  image1      :string(255)
 #  image2      :string(255)
 #  image3      :string(255)
@@ -31,6 +32,12 @@ class Shop < ApplicationRecord
   validates :name, presence: true
   validates :rate, presence: true, numericality: true
   validates :area, presence: true, if: :new_area_blank?
+
+  before_update do
+    self.image1 = "" if remove_image1.to_i.nonzero?
+    self.image2 = "" if remove_image2.to_i.nonzero?
+    self.image3 = "" if remove_image3.to_i.nonzero?
+  end
 
   def new_area_blank?
     new_area.blank?

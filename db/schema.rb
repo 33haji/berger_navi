@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170423120825) do
+ActiveRecord::Schema.define(version: 20170427145755) do
 
   create_table "admin_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",            null: false
@@ -27,7 +27,8 @@ ActiveRecord::Schema.define(version: 20170423120825) do
     t.float    "latitude",    limit: 24
     t.float    "longitude",   limit: 24
     t.string   "url"
-    t.text     "comment",     limit: 65535
+    t.string   "comment"
+    t.text     "detail",      limit: 65535
     t.string   "image1"
     t.string   "image2"
     t.string   "image3"

@@ -18,15 +18,40 @@
 
 /* header */
 header {
-  background-color: $white;
+  background-color: $black;
   text-align: center;
-  border-bottom: thin solid $gray;
+  color: $white;
+  .main-title {
+    a {
+      color: $white;
+    }
+    a:hover {
+      color: $white;
+      text-decoration: none;
+    }
+  }
   .navbar {
     margin-bottom: 0;
   }
+  .navbar .navbar-nav {
+    padding-top: 20px;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+    a {
+      color: $white;
+    }
+    a:hover {
+      background: $black;
+      color: $green;
+    }
+  }
+  .navbar .navbar-collapse {
+    text-align: center;
+  }
   ul {
     li{
-      color: $green;
+      font-size: medium;
     }
   }
   .dropdown:hover > .dropdown-menu{
@@ -41,12 +66,17 @@ header {
 
 /* footer */
 footer {
-  border-top: 1px solid #eaeaea;
-  margin-top: 45px;
-  padding-top: 10px;
-  ul {
-    float: left;
-    list-style: none;
+  margin-top: 100px;
+  border-top: 1px solid #ccc;
+  .navbar .navbar-nav {
+    font-size: medium;
+    a {
+      color: $black;
+    }
+    a:hover {
+      background-color: $white;
+      color: $green;
+    }
   }
 }
 

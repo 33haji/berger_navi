@@ -4,10 +4,12 @@
       <% if logged_in? %>
         <%= button_to 'Logout', admin_login_logout_path, class: 'btn btn-warning logout-button' %>
       <% end %>
-      <h1>humnavi</h1>
+      <div class="main-title">
+        <a href="/"><h1>HUMNAVI</h1></a>
+      </div>
       <% if logged_in? %>
         <nav>
-          <ul class="nav navbar-nav navbar-left">
+          <ul class="nav navbar-nav">
             <li><%= link_to "TABLES", manage_table_list_path %></li>
             <li><%= link_to "SHOPS", shops_path %></li>
             <li><%= link_to "TIPS", tip_genres_path %></li>

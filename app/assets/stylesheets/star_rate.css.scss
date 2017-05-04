@@ -1,0 +1,74 @@
+//レート評価 変数
+$starFull: 25px;//星1個の幅
+$starHalf: $starFull / 2;//星半分（0.5）の幅
+
+$rate1: $starFull;//星1
+$rate1-5: $starFull + $starHalf;//星1.5
+$rate2: $starFull * 2;//星2
+$rate2-5: ($starFull * 2) + $starHalf;//星2.5
+$rate3: $starFull * 3;//星3
+$rate3-5: ($starFull * 3) + $starHalf;//星3.5
+$rate4: $starFull * 4;//星4
+$rate4-5: ($starFull * 4) + $starHalf;//星4.5
+$rate5 :$starFull * 5;//星5
+
+.rate{
+  position: relative;
+  display: inline-block;
+  width: $starFull * 5;
+  height: $starFull;
+  font-size: $starFull;
+  &:before,&:after{
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '★★★★★';
+    display: inline-block;
+    height: $starFull;
+    line-height: $starFull;
+  }
+  &:before{
+  color: #ddd;
+  }
+  &:after{
+  color: #ffa500;
+  overflow: hidden;
+  white-space: nowrap;//これがないと改行されて星の半分（0.5）が表現できなくなる
+  }
+}
+.rate0-0:after{//星0
+  width: 0;
+}
+.rate1-0:after{//星1
+  width: $rate1;
+}
+.rate1-5:after{//星1.5
+  width: $rate1-5;
+}
+.rate2-0:after{//星2
+  width: $rate2;
+}
+.rate2-5:after{//星2.5
+  width: $rate2-5;
+}
+.rate3-0:after{//星3
+  width: $rate3;
+}
+.rate3-5:after{//星3.5
+  width: $rate3-5;
+}
+.rate4-0:after{//星4
+  width: $rate4;
+}
+.rate4-5:after{//星4.5
+  width: $rate4-5;
+}
+.rate5-0:after{//星5
+  width: $rate5;
+}
+
+
+.wrap{
+  width: 80px;
+  margin: 0 auto;
+}
