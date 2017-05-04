@@ -1,68 +1,72 @@
-<% provide(:title, 'Shop一覧') %>
-<div class="container">
-  <h1>Shop一覧</h1>
+<% if logged_in? %>
+  <% provide(:title, 'Shop一覧') %>
+  <div class="container">
+    <h1>Shop一覧</h1>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <div class="panel-title">検索</div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">検索</div>
+      </div>
+      <div class="panel-body">
+        <%= search_form_for @q do |f| %>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label :name_cont, "店名" %>
+                <%= f.text_field :name_cont, class: "form-control"%>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <%= f.label :comment_cont, "コメント" %>
+                <%= f.text_field :comment_cont, class: "form-control"%>
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="form-inline">
+                <%= f.label :created_at, "作成日" %>
+                <%= f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>〜
+                <%= f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <%= f.submit '検索', class: "btn btn-primary" %>
+          <%= link_to 'クリア', shops_path, class: "btn btn-default" %>
+        <% end %>
+      </div>
     </div>
-    <div class="panel-body">
-      <%= search_form_for @q do |f| %>
-        <div class="row">
-          <div class="col-sm-6">
-            <div class="form-group">
-              <%= f.label :name_cont, "店名" %>
-              <%= f.text_field :name_cont, class: "form-control"%>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="form-group">
-              <%= f.label :comment_cont, "コメント" %>
-              <%= f.text_field :comment_cont, class: "form-control"%>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <div class="form-inline">
-              <%= f.label :created_at, "作成日" %>
-              <%= f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>〜
-              <%= f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>
-            </div>
-          </div>
-        </div>
-        <%= f.submit '検索', class: "btn btn-primary" %>
-        <%= link_to 'クリア', shops_path, class: "btn btn-default" %>
-      <% end %>
-    </div>
-  </div>
 
-  <%= link_to "新規登録", new_shop_path, class: "btn btn-primary" %><br>
+    <%= link_to "新規登録", new_shop_path, class: "btn btn-primary" %><br>
 
-  <%= page_entries_info @shops %><br><%= paginate @shops %>
-  <div class="row">
-    <table class="table table-bordered table-striped">
-      <tr>
-        <th width="25%">店舗名</th>
-        <th width="10%">評価</th>
-        <th width="20%">エリア</th>
-        <th width="30%">特徴</th>
-        <th width="10%">作成日</th>
-        <th width="5%">詳細<br>変更<br>削除</th>
-      </tr>
-      <% @shops.each do |shop| %>
+    <%= page_entries_info @shops %><br><%= paginate @shops %>
+    <div class="row">
+      <table class="table table-bordered table-striped">
         <tr>
-          <td><%= shop.name %></td>
-          <td><%= shop.rate %></td>
-          <td><%= shop.area %></td>
-          <td><%= shop.comment %></td>
-          <td><%= shop.created_at.year %>年<%= shop.created_at.month %>月<%= shop.created_at.day %>日</td>
-          <td>
-            <%= link_to "詳細", shop_path(shop) %><br>
-            <%= link_to "変更", edit_shop_path(shop) %><br>
-            <%= link_to "削除", delete_shop_path(shop), :method => 'patch', data: {confirm: "本当に削除しますか？"}%>
+          <th width="25%">店舗名</th>
+          <th width="10%">評価</th>
+          <th width="20%">エリア</th>
+          <th width="30%">特徴</th>
+          <th width="10%">作成日</th>
+          <th width="5%">詳細<br>変更<br>削除</th>
         </tr>
-      <% end %>
-    </table>
-  </div>
+        <% @shops.each do |shop| %>
+          <tr>
+            <td><%= shop.name %></td>
+            <td><%= shop.rate %></td>
+            <td><%= shop.area %></td>
+            <td><%= shop.comment %></td>
+            <td><%= shop.created_at.year %>年<%= shop.created_at.month %>月<%= shop.created_at.day %>日</td>
+            <td>
+              <%= link_to "詳細", shop_path(shop) %><br>
+              <%= link_to "変更", edit_shop_path(shop) %><br>
+              <%= link_to "削除", delete_shop_path(shop), :method => 'patch', data: {confirm: "本当に削除しますか？"}%>
+          </tr>
+        <% end %>
+      </table>
+    </div>
 
-  <br><%= paginate @shops %>
-</div>
+    <br><%= paginate @shops %>
+  </div>
+<% else %>
+  <%= render 'layouts/notfound' %>
+<% end %>

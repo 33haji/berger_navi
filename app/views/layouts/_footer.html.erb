@@ -4,6 +4,11 @@
       <nav>
         <ul class="nav navbar-nav">
           <li><%= link_to "HOME", root_path %></li>
+          <% if logged_in? %>
+            <li><%= link_to "TABLES", manage_table_list_path %></li>
+            <li><%= link_to "SHOPS", shops_path %></li>
+            <li><%= link_to "TIPS", tip_genres_path %></li>
+          <% end %>
         </ul>
       </nav>
     </div>

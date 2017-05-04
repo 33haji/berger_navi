@@ -1,0 +1,10 @@
+<div class="sidebar">
+  <h3 class="sidebar-title">エリア</h3>
+  <% @shops_in_area.each do |shop_hash| %>
+    <a href="/?area=<%= shop_hash.first %>">
+      <div class="column">
+        <%= shop_hash.first %> (<%= shop_hash.second %>)
+      </div>
+    </a>
+  <% end %>
+</div>

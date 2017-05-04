@@ -45,11 +45,10 @@
           <div class="column-name">URL</div>
           <%= link_to @shop.url, "#{@shop.url}" %>
         </div>
-
-        <% if logged_in? %>
-          <div><%= link_to "SHOP一覧", shops_path %></div>
-        <% end %>
       </div>
+    </div>
+    <div class="col-md-3">
+      <%= render 'layouts/sidebar' %>
     </div>
   </div>
 </div>

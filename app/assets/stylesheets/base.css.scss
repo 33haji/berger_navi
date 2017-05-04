@@ -80,6 +80,34 @@ footer {
   }
 }
 
+/* サイドバー */
+.sidebar {
+  .sidebar-title {
+    margin-bottom: 0;
+    border-bottom: thin solid $gray;
+    padding: 20px 0 20px 20px;
+    font-weight: bold;
+    border-left: medium solid $bronze
+  }
+  .column {
+    font-size: 18px;
+    border-left: thin solid $gray;
+    border-right: thin solid $gray;
+    border-bottom: thin solid $gray;
+    padding: 10px 0 10px 20px;
+  }
+  .column:hover {
+    background-color: $light-gray;
+  }
+  a {
+    color: $black;
+  }
+  a:hover {
+    text-decoration: none;
+
+  }
+}
+
 /* button */
 .btn {
   margin-top: 20px;
@@ -92,4 +120,9 @@ code {
   font-size: 120%;
   font-weight: bold;
   background-color: inherit;
+}
+
+/* notfoundページ */
+.notfound {
+  text-align: center;
 }

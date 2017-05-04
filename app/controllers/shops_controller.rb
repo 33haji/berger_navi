@@ -34,6 +34,7 @@ class ShopsController < ApplicationController
       marker.infowindow render_to_string(partial: "shops/infowindow", locals: { shop: s })
       marker.json({title: s.name})
     end
+    @shops_in_area = count_shop_in_area
   end
 
   def edit
@@ -69,5 +70,16 @@ class ShopsController < ApplicationController
 
     def set_shop
       @shop = Shop.find(params[:id])
+    end
+
+    def count_shop_in_area
+      shops_in_area = {}
+      areas = Shop.select(:area).uniq
+      areas.each do |area|
+        shop_count = Shop.where(delete_flag: false, area: area.area).count
+        shops_in_area[area.area] = shop_count
+      end
+      shops_in_area.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }
+      shops_in_area
     end
 end
