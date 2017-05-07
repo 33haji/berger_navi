@@ -2,7 +2,11 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-        <h3 class="title">おすすめ</h3>
+        <% if params[:area].present? %>
+          <h3 class="title">" <%= params[:area] %> "のおすすめ</h3>
+        <% else %>
+          <h3 class="title">おすすめ</h3>
+        <% end %>
         <div id="map"></div>
         <script type="text/javascript">
             handler = Gmaps.build('Google');
@@ -12,13 +16,16 @@
               handler.fitMapToBounds();
             });
         </script>
-        <% @shops.each do |shop| %>
+        <% @shops.each_with_index do |shop, i| %>
           <div class="shop-abst">
             <a href="/shops/<%= shop.id %>">
               <%= image_tag(shop.image1.url, class: "shop-abst-box shop-abst-image") %>
             </a>
             <div class="shop-abst-box">
               <a href="/shops/<%= shop.id %>">
+                <% if @ranking[i] != 0 %>
+                  <%= image_tag("rank_#{@ranking[i]}.png", height: '30px') %>
+                <% end %>
                 <span class="shop-abst-name"><%= shop.name %></span>
               </a>
               <% rate_value = shop.rate.to_s %>
