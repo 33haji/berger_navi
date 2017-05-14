@@ -41,12 +41,13 @@ gem 'kaminari-bootstrap'
 gem 'chartkick'
 gem 'by_star'
 gem 'twitter'
-gem 'instagram', :git => 'git://github.com/Instagram/instagram-ruby-gem.git'
 gem 'bcrypt',         '3.1.11'
 gem 'rails-i18n'
 # アドレスから緯度・経度を取得し、地図を表示するためのgem
 gem "gmaps4rails"
 gem "geocoder"
+# Dropbox APIを使うためのgem
+gem 'dropbox-sdk'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

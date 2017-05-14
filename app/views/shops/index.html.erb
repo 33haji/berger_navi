@@ -10,19 +10,19 @@
       <div class="panel-body">
         <%= search_form_for @q do |f| %>
           <div class="row">
-            <div class="col-sm-6">
+            <div class="col-md-6 col-xs-12">
               <div class="form-group">
                 <%= f.label :name_cont, "店名" %>
                 <%= f.text_field :name_cont, class: "form-control"%>
               </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-md-6 col-xs-12">
               <div class="form-group">
                 <%= f.label :comment_cont, "コメント" %>
                 <%= f.text_field :comment_cont, class: "form-control"%>
               </div>
             </div>
-            <div class="col-sm-12">
+            <div class="col-md-6 col-xs-12">
               <div class="form-inline">
                 <%= f.label :created_at, "作成日" %>
                 <%= f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>〜

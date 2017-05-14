@@ -1,21 +1,12 @@
 <div class="home">
   <div class="container">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-9 col-xs-12">
         <% if params[:area].present? %>
           <h3 class="title">" <%= params[:area] %> "のおすすめ</h3>
         <% else %>
           <h3 class="title">おすすめ</h3>
         <% end %>
-        <div id="map"></div>
-        <script type="text/javascript">
-            handler = Gmaps.build('Google');
-            handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-              markers = handler.addMarkers(<%=raw @map.to_json %>);
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-            });
-        </script>
         <% @shops.each_with_index do |shop, i| %>
           <div class="shop-abst">
             <a href="/shops/<%= shop.id %>">
@@ -39,8 +30,17 @@
             </div>
           </div>
         <% end %>
+        <div id="map"></div>
+        <script type="text/javascript">
+            handler = Gmaps.build('Google');
+            handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+              markers = handler.addMarkers(<%=raw @map.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+            });
+        </script>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 col-xs-12">
         <%= render 'layouts/sidebar' %>
       </div>
     </div>

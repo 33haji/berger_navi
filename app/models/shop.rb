@@ -42,4 +42,19 @@ class Shop < ApplicationRecord
   def new_area_blank?
     new_area.blank?
   end
+
+  def image1_filename
+    name_array = self.image1.to_s.split('/')
+    filename = name_array[name_array.length - 1]
+  end
+
+  def image2_filename
+    name_array = self.image2.to_s.split('/')
+    filename = name_array[name_array.length - 1]
+  end
+
+  def image3_filename
+    name_array = self.image3.to_s.split('/')
+    filename = name_array[name_array.length - 1]
+  end
 end

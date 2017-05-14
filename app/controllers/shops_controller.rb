@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  require 'dropbox_sdk'
   before_action :set_shop, only: %w(edit update delete)
 
   def index
@@ -35,6 +36,11 @@ class ShopsController < ApplicationController
       marker.json({title: s.name})
     end
     @shops_in_area = count_shop_in_area
+    # 画像パスを取得(本番環境ではDropboxから取得)
+    client = DropboxClient.new('nCQEL4GTUmAAAAAAAAAAIbZj5tEagx1B7NZmrk55SGRVHHNKW_RDv9MaLB2DPeMG') if Rails.env == 'production'
+    @image1_path = (Rails.env == 'production') ? client.media(@shop.image1_filename)['url'] : @shop.image1.url if @shop.image1?
+    @image2_path = (Rails.env == 'production') ? client.media(@shop.image2_filename)['url'] : @shop.image2.url if @shop.image2?
+    @image3_path = (Rails.env == 'production') ? client.media(@shop.image3_filename)['url'] : @shop.image3.url if @shop.image3?
   end
 
   def edit

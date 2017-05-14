@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   end
 
   resources :tip_genres
+
+  resources :contacts
 end

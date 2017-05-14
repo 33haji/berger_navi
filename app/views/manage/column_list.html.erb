@@ -1,37 +1,39 @@
-<% provide(:title, 'Columns') %>
-<div class="container">
-  <h1>Column一覧 [ <%= @table_name %> ]</h1>
+<% if logged_in? %>
+  <% provide(:title, 'Columns') %>
+  <div class="container">
+    <h1>Column一覧 [ <%= @table_name %> ]</h1>
 
-  <div class="row">
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped" style="margin-top: 30px;">
-        <tr>
-          <% @column_names.each do |name| %>
-            <th>
-              <%= name %>
-            </th>
-          <% end %>
-        </tr>
-        <tr>
-          <% @column_types.each do |name| %>
-            <th>
-              <%= name %>
-            </th>
-          <% end %>
-        </tr>
-        <% @columns.each do |column| %>
+    <div class="row">
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped" style="margin-top: 30px;">
           <tr>
             <% @column_names.each do |name| %>
-              <td NOWRAP>
-                <%= column.send(name) %>
-              </td>
+              <th>
+                <%= name %>
+              </th>
             <% end %>
           </tr>
-        <% end %>
-      </table>
+          <tr>
+            <% @column_types.each do |name| %>
+              <th>
+                <%= name %>
+              </th>
+            <% end %>
+          </tr>
+          <% @columns.each do |column| %>
+            <tr>
+              <% @column_names.each do |name| %>
+                <td NOWRAP>
+                  <%= column.send(name) %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
+    <%= link_to 'テーブル一覧', manage_table_list_path %>
   </div>
-
-  <%= link_to 'テーブル一覧', manage_table_list_path %>
-
-</div>
+<% else %>
+  <%= render 'layouts/notfound' %>
+<% end %>

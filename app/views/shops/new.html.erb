@@ -1,11 +1,15 @@
-<% provide(:title, '新規登録(shop)') %>
-<div class="container">
-  <h1>新規登録(SHOP)</h1>
-  <p><strong style='color: #E00;'>*</strong>が付いているものは必須項目です。</p><br>
+<% if logged_in? %>
+  <% provide(:title, '新規登録(shop)') %>
+  <div class="container">
+    <h1>新規登録(SHOP)</h1>
+    <p><strong style='color: #E00;'>*</strong>が付いているものは必須項目です。</p><br>
 
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <%= render 'form' %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-xs-12">
+        <%= render 'form' %>
+      </div>
     </div>
   </div>
-</div>
+<% else %>
+  <%= render 'layouts/notfound' %>
+<% end %>

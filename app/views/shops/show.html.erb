@@ -13,7 +13,7 @@
           <div class="image-container">
             <% if @shop.image1? %>
               <div class="image">
-                <%= image_tag(@shop.image1.url, class: "shop-image", align: "center") %>
+                <%= image_tag(@image1_path, class: "shop-image", align: "center") %>
               </div>
             <% end %>
             <% if @shop.image2? %>
@@ -47,7 +47,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 col-xs-12">
       <%= render 'layouts/sidebar' %>
     </div>
   </div>

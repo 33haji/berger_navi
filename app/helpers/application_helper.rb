@@ -52,4 +52,9 @@ module ApplicationHelper
       markdown = Redcarpet::Markdown.new(html_render, options)
       markdown.render(text)
   end
+
+  # spページに変換するためのメソッド
+  def check_sp_user
+    request.variant = :sp if request.user_agent.include?('Mobile') || request.user_agent.include?('Android')
+  end
 end

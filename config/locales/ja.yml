@@ -6,3 +6,6 @@ ja:
         name: 店名
         rate: 評価
         area: 地域
+      contact:
+        contact_email: 連絡先メールアドレス
+        content: お問い合わせ内容
