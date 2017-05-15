@@ -38,9 +38,9 @@ class ShopsController < ApplicationController
     @shops_in_area = count_shop_in_area
     # 画像パスを取得(本番環境ではDropboxから取得)
     client = new_dropbox_client if Rails.env.production?
-    @image1_path = (Rails.env.production?) ? client.media(@shop.image1_filename)['url'] : @shop.image1.url if @shop.image1?
-    @image2_path = (Rails.env.production?) ? client.media(@shop.image2_filename)['url'] : @shop.image2.url if @shop.image2?
-    @image3_path = (Rails.env.production?) ? client.media(@shop.image3_filename)['url'] : @shop.image3.url if @shop.image3?
+    @image1_path = (Rails.env.production?) ? client.media(@shop.image1_filename)['url'] : @shop.image1.url if @shop.image1.url.present?
+    @image2_path = (Rails.env.production?) ? client.media(@shop.image2_filename)['url'] : @shop.image2.url if @shop.image2.url.present?
+    @image3_path = (Rails.env.production?) ? client.media(@shop.image3_filename)['url'] : @shop.image3.url if @shop.image3.url.present?
   end
 
   def edit

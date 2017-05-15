@@ -11,17 +11,17 @@
         </h2>
         <div class="body">
           <div class="image-container">
-            <% if @shop.image1? %>
+            <% if @shop.image1.url.present? %>
               <div class="image">
                 <%= image_tag(@image1_path, class: "shop-image", align: "center") %>
               </div>
             <% end %>
-            <% if @shop.image2? %>
+            <% if @shop.image2.url.present? %>
               <div class="image">
                 <%= image_tag(@image2_path, class: "shop-image", align: "center") %>
               </div>
             <% end %>
-            <% if @shop.image3? %>
+            <% if @shop.image3.url.present? %>
               <div class="image">
                 <%= image_tag(@image3_path, class: "shop-image", align: "center") %>
               </div>

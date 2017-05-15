@@ -24,7 +24,7 @@ class HomeController < ApplicationController
     client = new_dropbox_client if Rails.env.production?
     @image_paths = {}
     @shops.each do |shop|
-      image_path = (Rails.env.production?) ? client.media(shop.image1_filename)['url'] : shop.image1.url if shop.image1?
+      image_path = (Rails.env.production?) ? client.media(shop.image1_filename)['url'] : shop.image1.url if shop.image1.url.present?
       @image_paths[shop.id] = image_path
     end
   end

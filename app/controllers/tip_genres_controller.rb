@@ -5,7 +5,7 @@ class TipGenresController < ApplicationController
     client = new_dropbox_client if Rails.env.production?
     @image_paths = {}
     @tip_genres.each do |genre|
-      image_path = (Rails.env.production?) ? client.media(genre.image_filename)['url'] : genre.image.url if genre.image?
+      image_path = (Rails.env.production?) ? client.media(genre.image_filename)['url'] : genre.image.url if genre.image.url.present?
       @image_paths[genre.id] = image_path
     end
   end
