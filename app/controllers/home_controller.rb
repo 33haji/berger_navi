@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  require 'dropbox_sdk'
+
   def index
     # 対象の店舗を取得する
     if params[:area].blank?
@@ -16,6 +18,14 @@ class HomeController < ApplicationController
       marker.lng shop.longitude
       marker.infowindow render_to_string(partial: "home/infowindow", locals: { shop: shop })
       marker.json({title: shop.name})
+    end
+
+    # 画像パスを取得(本番環境ではDropboxから取得)
+    client = new_dropbox_client if Rails.env.production?
+    @image_paths = {}
+    @shops.each do |shop|
+      image_path = (Rails.env.production?) ? client.media(shop.image1_filename)['url'] : shop.image1.url if shop.image1?
+      @image_paths[shop.id] = image_path
     end
   end
 

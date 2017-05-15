@@ -13,4 +13,9 @@ class TipGenre < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   has_many :tips
+
+  def image_filename
+    name_array = self.image.to_s.split('/')
+    filename = name_array[name_array.length - 1]
+  end
 end

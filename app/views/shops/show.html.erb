@@ -18,12 +18,12 @@
             <% end %>
             <% if @shop.image2? %>
               <div class="image">
-                <%= image_tag(@shop.image2.url, class: "shop-image", align: "center") %>
+                <%= image_tag(@image2_path, class: "shop-image", align: "center") %>
               </div>
             <% end %>
             <% if @shop.image3? %>
               <div class="image">
-                <%= image_tag(@shop.image3.url, class: "shop-image", align: "center") %>
+                <%= image_tag(@image3_path, class: "shop-image", align: "center") %>
               </div>
             <% end %>
           </div>

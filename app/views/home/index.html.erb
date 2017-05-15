@@ -10,7 +10,7 @@
         <% @shops.each_with_index do |shop, i| %>
           <div class="shop-abst">
             <a href="/shops/<%= shop.id %>">
-              <%= image_tag(shop.image1.url, class: "shop-abst-box shop-abst-image") %>
+              <%= image_tag(@image_paths[shop.id], class: "shop-abst-box shop-abst-image") %>
             </a>
             <div class="shop-abst-box">
               <a href="/shops/<%= shop.id %>">

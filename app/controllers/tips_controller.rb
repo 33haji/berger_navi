@@ -23,6 +23,9 @@ class TipsController < ApplicationController
   def show
     @tip = Tip.find(params[:id])
     @tip_genre = TipGenre.find(@tip.genre_id)
+    # 画像パスを取得(本番環境ではDropboxから取得)
+    client = new_dropbox_client if Rails.env.production?
+    @image_path = (Rails.env.production?) ? client.media(@tip_genre.image_filename)['url'] : @tip_genre.image.url if @tip_genre.image?
   end
 
   def edit
