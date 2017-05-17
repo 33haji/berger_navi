@@ -35,7 +35,6 @@ gem 'ransack'
 gem 'pry-byebug'
 gem 'redcarpet', '~> 2.3.0'
 gem 'coderay'
-gem 'carrierwave'
 gem 'kaminari'
 gem 'kaminari-bootstrap'
 gem 'chartkick'
@@ -48,6 +47,8 @@ gem "gmaps4rails"
 gem "geocoder"
 # Dropbox APIを使うためのgem
 gem 'dropbox-sdk'
+# 秘密情報をgitにあげないためのgem(config/application.yml)
+gem 'figaro'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -61,10 +62,12 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'carrierwave'
 end
 
 group :production do
   gem 'rails_12factor'
+  gem 'carrierwave-dropbox'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
