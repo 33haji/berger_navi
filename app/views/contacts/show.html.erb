@@ -1,0 +1,17 @@
+<% if logged_in? %>
+  <% provide(:title, 'お問い合わせ詳細') %>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <div class="contact-show">
+          <h3 class="contact-label">連絡先メールアドレス</h3>
+          <h4 class="contact-content"><%= @contact.contact_email %></h4>
+          <h3 class="contact-label">お問い合わせ内容</h3>
+          <h4 class="contact-content"><%= @contact.content %></h4>
+          <h3 class="contact-label">お問い合わせ日</h3>
+          <h4 class="contact-content"><%= @contact.created_at.year %>年<%= @contact.created_at.month %>月<%= @contact.created_at.day %>日</h4>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,12 +1,12 @@
 class ContactsController < ApplicationController
   def index
     @q = Contact.ransack(params[:q])
-    @contacts = @q.result.page(params[:page]).order(created_at: :desc)
+    contact = (defined?(params[:q][:read_flag]) && params[:q][:read_flag] == 'false') ? @q.result.where(read_flag: false) : @q.result
+    @contacts = contact.page(params[:page]).order(created_at: :desc)
   end
 
   def show
     @contact = Contact.find(params[:id])
-    @contact.read_flag = true
     @contact.save
   end
 

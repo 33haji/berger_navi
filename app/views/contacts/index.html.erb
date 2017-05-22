@@ -1,63 +1,68 @@
 <% if logged_in? %>
   <% provide(:title, 'お問い合わせ一覧') %>
   <div class="container">
-    <h1>お問い合わせ一覧</h1>
+    <div class="contact-index">
+      <h1>お問い合わせ一覧</h1>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <div class="panel-title">検索</div>
-      </div>
-      <div class="panel-body">
-        <%= search_form_for @q do |f| %>
-          <div class="row">
-            <div class="col-md-6 col-xs-12">
-              <div class="form-group">
-                <%= f.label :content, "お問い合わせ内容" %>
-                <%= f.text_field :content, class: "form-control"%>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">検索</div>
+        </div>
+        <div class="panel-body">
+          <%= search_form_for @q do |f| %>
+            <div class="row">
+              <div class="col-md-6 col-xs-12">
+                <div class="form-group">
+                  <%= f.label :content, "お問い合わせ内容" %>
+                  <%= f.text_field :content, class: "form-control"%>
+                </div>
+              </div>
+              <div class="col-md-6 col-xs-12">
+                <div class="form-inline">
+                  <%= f.label :created_at, "作成日" %>
+                  <%= f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>〜
+                  <%= f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>
+                </div>
               </div>
             </div>
-            <div class="col-md-6 col-xs-12">
-              <div class="form-inline">
-                <%= f.label :created_at, "作成日" %>
-                <%= f.date_select :created_at_gt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>〜
-                <%= f.date_select :created_at_lt, {include_blank: true, use_month_numbers: true, date_separator: ' / '}, class: "form-control" %>
-              </div>
-            </div>
-          </div>
-          <%= f.check_box :read_flag, {:checked => false}, false, true %>
-          <%= f.label :read_flag, "未読のみ" %><br />
-          <%= f.submit '検索', class: "btn btn-primary" %>
-          <%= link_to 'クリア', contacts_path, class: "btn btn-default" %>
-        <% end %>
+            <%= f.check_box :read_flag, {:checked => false}, "false", "true" %>
+            <%= f.label :read_flag, "未読のみ" %><br />
+            <%= f.submit '検索', class: "btn btn-primary" %>
+            <%= link_to 'クリア', contacts_path, class: "btn btn-default" %>
+          <% end %>
+        </div>
       </div>
-    </div>
 
-    <%= page_entries_info @contacts %><br><%= paginate @contacts %>
-    <div class="row">
-      <table class="table table-bordered table-striped">
-        <tr>
-          <th width="40%">連絡先アドレス</th>
-          <th width="40%">お問い合わせ内容</th>
-          <th width="20%">お問い合わせ日</th>
-        </tr>
-        <% @contacts.each do |contact| %>
-          <a href="<%= contact_path(contact) %>">
-            <tr class="contact-list">
-              <% if contact.read_flag %>
+      <%= page_entries_info @contacts %><br><%= paginate @contacts %>
+      <div class="row">
+        <table class="table table-bordered table-striped">
+          <tr>
+            <th width="40%">連絡先アドレス</th>
+            <th width="40%">お問い合わせ内容</th>
+            <th width="20%">お問い合わせ日</th>
+          </tr>
+          <% @contacts.each do |contact| %>
+
+              <tr class="contact-list">
                 <td><%= contact.contact_email %></td>
-                <td><%= contact.content.truncate(20) %></td>
-              <% else %>
-                <td><strong><%= contact.contact_email %></strong></td>
-                <td><strong><%= contact.content.truncate(20) %></strong></td>
-              <% end %>
-              <td><%= contact.created_at.year %>年<%= contact.created_at.month %>月<%= contact.created_at.day %>日</td>
-            </tr>
-          </a>
-        <% end %>
-      </table>
-    </div>
+                <% if contact.read_flag %>
+                <td><a href="<%= contact_path(contact) %>">
+                  <%= contact.content.truncate(20) %>
+                </a></td>
+                <% else %>
+                  <td><a href="<%= contact_path(contact) %>">
+                    <strong><%= contact.content.truncate(20) %></strong>
+                  </a></td>
+                <% end %>
+                <td><%= contact.created_at.year %>年<%= contact.created_at.month %>月<%= contact.created_at.day %>日</td>
+              </tr>
+            </a>
+          <% end %>
+        </table>
+      </div>
 
-    <br><%= paginate @contacts %>
+      <br><%= paginate @contacts %>
+    </div>
   </div>
 <% else %>
   <%= render 'layouts/notfound' %>

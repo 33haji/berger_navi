@@ -1,5 +1,27 @@
 @import "config";
 
-.contact-list:hover {
-  background-color: $light-gray;
+/* お問い合わせ一覧画面 */
+.contact-index {
+  a {
+    color: $black;
+  }
+  .contact-list:hover {
+    background-color: $light-gray;
+  }
+}
+
+/* お問い合わせ詳細画面 */
+.contact-show {
+  .contact-label {
+    font-weight: bold;
+    text-align: center;
+    color: $green;
+    padding-top: 40px;
+    padding-bottom: 10px;
+  }
+  .contact-content {
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+  }
 }
