@@ -1,5 +1,12 @@
 @import "config";
 
+code {
+  color: $orange;
+  font-size: 100%;
+  font-weight: normal;
+  background-color: inherit;
+}
+
 .tips {
   background-color: #424242;
   padding-top: 30px;

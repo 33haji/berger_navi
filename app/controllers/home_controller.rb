@@ -4,9 +4,9 @@ class HomeController < ApplicationController
   def index
     # 対象の店舗を取得する
     if params[:area].blank?
-      @shops = Shop.where(delete_flag: false).where.not(latitude: nil, longitude:nil).order(rate: :desc).take(10)
+      @shops = Shop.where(delete_flag: false).where.not(latitude: nil, longitude:nil).order(rate: :desc).take(5)
     else
-      @shops = Shop.where(delete_flag: false, area: params[:area]).where.not(latitude: nil, longitude:nil).order(rate: :desc).take(10)
+      @shops = Shop.where(delete_flag: false, area: params[:area]).where.not(latitude: nil, longitude:nil).order(rate: :desc).take(5)
     end
     @shops_in_area = count_shop_in_area
     # 順位を決定する
