@@ -2,6 +2,13 @@
 
 /* SHOP詳細画面 */
 .shop-show {
+  /* markdownのcode記法のcss */
+  code {
+    color: $orange;
+    font-weight: bold;
+    background-color: inherit;
+  }
+
   .title {
     text-align: center;
     font-family: Lato,'Open Sans','メイリオ',Meiryo;
