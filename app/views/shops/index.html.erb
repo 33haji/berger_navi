@@ -36,7 +36,8 @@
       </div>
     </div>
 
-    <%= link_to "新規登録", new_shop_path, class: "btn btn-primary" %><br>
+    <%= link_to "新規登録", new_shop_path, class: "btn btn-primary" %>
+    <%= link_to "ジャンルを新規登録", new_genre_tag_path, class: "btn btn-success" %><br>
 
     <%= page_entries_info @shops %><br><%= paginate @shops %>
     <div class="row">

@@ -1,0 +1,18 @@
+<%= form_for(@genre_tag) do |f| %>
+  <% if @genre_tag.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <ul>
+      <% @genre_tag.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :tag_name, "ジャンル", class: 'required' %>
+    <%= f.text_field :tag_name, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "登録", class: "btn btn-primary" %>
+<% end %>

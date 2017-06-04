@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :tip_genres
 
   resources :contacts
+
+  resources :genre_tags
 end

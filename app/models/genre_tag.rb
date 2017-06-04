@@ -9,4 +9,5 @@
 #
 
 class GenreTag < ApplicationRecord
+  validates :tag_name, presence: true
 end
