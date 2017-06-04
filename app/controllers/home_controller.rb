@@ -8,6 +8,7 @@ class HomeController < ApplicationController
     else
       @shops = Shop.where(delete_flag: false, area: params[:area]).where.not(latitude: nil, longitude:nil).order(rate: :desc).take(5)
     end
+    @all_shop_count = Shop.where(delete_flag: false).where.not(latitude: nil, longitude:nil).count
     @shops_in_area = count_shop_in_area
     # 順位を決定する
     @ranking = get_ranking(@shops)

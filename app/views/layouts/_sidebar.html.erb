@@ -1,5 +1,11 @@
 <div class="sidebar">
+  <!-- エリアごとの検索用 -->
   <h3 class="sidebar-title">エリア</h3>
+  <a href="/">
+    <div class="column">
+      すべて (<%= @all_shop_count %>)
+    </div>
+  </a>
   <% @shops_in_area.each do |shop_hash| %>
     <a href="/?area=<%= shop_hash.first %>">
       <div class="column">
