@@ -21,6 +21,11 @@
 #
 
 class Shop < ApplicationRecord
+  has_many :shops_genre_tags
+  has_many :genre_tags, :through => :shops_genre_tags
+
+  accepts_nested_attributes_for :genre_tags
+
   mount_uploader :image1, ImageUploader
   mount_uploader :image2, ImageUploader
   mount_uploader :image3, ImageUploader

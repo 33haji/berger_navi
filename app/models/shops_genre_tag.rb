@@ -10,4 +10,6 @@
 #
 
 class ShopsGenreTag < ApplicationRecord
+  belongs_to :shop
+  belongs_to :genre_tag
 end

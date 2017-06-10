@@ -6,6 +6,8 @@ class ShopsController < ApplicationController
     @q = Shop.ransack(params[:q])
     shops = @q.result.where(delete_flag: false)
     @shops = shops.page(params[:page]).order(created_at: :desc)
+    @shops_genre_tags = ShopsGenreTag.where(shop_id: @shops.ids)
+    @genre_tags = GenreTag.where(id: @shops_genre_tags.map{|item| item.genre_tag_id})
   end
 
   def new
@@ -36,6 +38,7 @@ class ShopsController < ApplicationController
       marker.json({title: s.name})
     end
     @shops_in_area = count_shop_in_area
+    @all_shop_count = Shop.where(delete_flag: false).where.not(latitude: nil, longitude:nil).count
     # 画像パスを取得(本番環境ではDropboxから取得)
     client = new_dropbox_client if Rails.env.production?
     @image1_path = (Rails.env.production?) ? client.media(@shop.image1_filename)['url'] : @shop.image1.url if @shop.image1.url.present?
@@ -71,7 +74,7 @@ class ShopsController < ApplicationController
   private
 
     def shop_params
-      params.require(:shop).permit(:name, :rate, :area, :new_area, :address, :url, :comment, :detail, :image1, :image2, :image3, :remove_image1, :remove_image2, :remove_image3)
+      params.require(:shop).permit(:name, :rate, :area, :new_area, :address, :url, :comment, :detail, :image1, :image2, :image3, :remove_image1, :remove_image2, :remove_image3 ,{ :genre_tag_ids=> [] })
     end
 
     def set_shop

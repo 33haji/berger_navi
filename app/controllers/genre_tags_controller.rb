@@ -14,6 +14,6 @@ class GenreTagsController < ApplicationController
   end
 
   def genre_tag_params
-    params.require(:genre_tags).permit(:tag_name)
+    params.require(:genre_tag).permit(:tag_name)
   end
 end
