@@ -28,6 +28,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 
+gem 'jquery-turbolinks'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'sdoc',         '0.4.0', group: :doc
 gem 'annotate', ">=2.6.0"

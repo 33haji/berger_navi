@@ -16,5 +16,6 @@
 //= require underscore
 //= require markercluster
 //= require gmaps/google
+//= require jquery.turbolinks
 //= require turbolinks
 //= require_tree .

@@ -1,16 +1,13 @@
-<div class="sidebar">
+<div id ="sidebar" class="sidebar">
   <!-- エリアごとの検索用 -->
-  <h3 class="sidebar-title">エリア</h3>
-  <a href="/">
-    <div class="column">
-      すべて (<%= @all_shop_count %>)
-    </div>
-  </a>
-  <% @shops_in_area.each do |shop_hash| %>
-    <a href="/?area=<%= shop_hash.first %>">
-      <div class="column">
-        <%= shop_hash.first %> (<%= shop_hash.second %>)
-      </div>
-    </a>
-  <% end %>
+  <h3 class="sidebar-title"><a href="/"><span class="glyphicon glyphicon-map-marker"></span> エリア</a></h3>
+  <div id="sidebar-content">
+    <% @shops_in_area.each do |shop_hash| %>
+      <a href="/?area=<%= shop_hash.first %>">
+        <div class="column">
+          <%= shop_hash.first %> (<%= shop_hash.second %>)
+        </div>
+      </a>
+    <% end %>
+  </div>
 </div>
