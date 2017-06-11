@@ -31,6 +31,8 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find(params[:id])
+    genre_tag_ids = ShopsGenreTag.where(shop_id: @shop.id).map {|item| item.genre_tag_id}
+    @genre_tag_names = GenreTag.where(id: genre_tag_ids).map {|item| item.tag_name}
     @map = Gmaps4rails.build_markers(@shop) do |s, marker|
       marker.lat s.latitude
       marker.lng s.longitude

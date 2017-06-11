@@ -8,6 +8,8 @@ class HomeController < ApplicationController
     else
       @shops = Shop.where(delete_flag: false, area: params[:area]).where.not(latitude: nil, longitude:nil).order(rate: :desc).take(5)
     end
+    # ショップのジャンル名を取得
+    @genre_tag_names_list = get_genre_tag_names(@shops)
     @all_shop_count = Shop.where(delete_flag: false).where.not(latitude: nil, longitude:nil).count
     @shops_in_area = count_shop_in_area
     # 順位を決定する
@@ -63,5 +65,16 @@ class HomeController < ApplicationController
         count = count + 1
       end
       ranking
+    end
+
+    # shopsのジャンル名を取得するメソッド
+    def get_genre_tag_names(shops)
+      genre_tag_names_list = []
+      shops.each do |shop|
+        genre_tag_ids = ShopsGenreTag.where(shop_id: shop.id).map {|item| item.genre_tag_id}
+        genre_tag_names = GenreTag.where(id: genre_tag_ids).map {|item| item.tag_name}
+        genre_tag_names_list << genre_tag_names
+      end
+      genre_tag_names_list
     end
 end

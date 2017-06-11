@@ -38,6 +38,10 @@
                 handler.getMap().setZoom(15);
               });
           </script>
+          <div class="column-name">ジャンル</div>
+          <% @genre_tag_names.each do |tag_name| %>
+            <span class="shop-tag"><%= tag_name %></span>
+          <% end %>
           <div class="column-name">地域</div>
           <%= @shop.area %>
           <div class="column-name">住所</div>

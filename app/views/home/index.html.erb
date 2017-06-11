@@ -22,11 +22,15 @@
               <% rate_value = shop.rate.to_s %>
               <% rate_value = rate_value.gsub(/[.]/, '-') %>
               <br><span class="rate rate<%= rate_value %>"></span>
+
               <br>地域：<strong><%= shop.area %></strong>
               <% if shop.url.present? %>
                 <br>URL：<strong><%= link_to shop.url, "#{shop.url}" %></strong>
               <% end %>
               <br>特徴：<strong><%= shop.comment %></strong>
+              <br>ジャンル：<% @genre_tag_names_list[i].each do |tag_name| %>
+                <span class="shop-tag"><%= tag_name %></span>
+              <% end %>
             </div>
           </div>
         <% end %>
