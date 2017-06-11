@@ -33,19 +33,23 @@ class ShopsController < ApplicationController
     @shop = Shop.find(params[:id])
     genre_tag_ids = ShopsGenreTag.where(shop_id: @shop.id).map {|item| item.genre_tag_id}
     @genre_tag_names = GenreTag.where(id: genre_tag_ids).map {|item| item.tag_name}
+    # 画像パスを取得(本番環境ではDropboxから取得)
+    client = new_dropbox_client if Rails.env.production?
+    @image1_path = (Rails.env.production?) ? client.media(@shop.image1_filename)['url'] : @shop.image1.url if @shop.image1.url.present?
+    @image2_path = (Rails.env.production?) ? client.media(@shop.image2_filename)['url'] : @shop.image2.url if @shop.image2.url.present?
+    @image3_path = (Rails.env.production?) ? client.media(@shop.image3_filename)['url'] : @shop.image3.url if @shop.image3.url.present?
+
+    # サイドバーの情報を取得
+    @all_shop_count = Shop.where(delete_flag: false).where.not(latitude: nil, longitude:nil).count
+    @area_search_info = get_area_search_info
+    @genre_tag_search_info = get_genre_tag_search_info
+
     @map = Gmaps4rails.build_markers(@shop) do |s, marker|
       marker.lat s.latitude
       marker.lng s.longitude
       marker.infowindow render_to_string(partial: "shops/infowindow", locals: { shop: s })
       marker.json({title: s.name})
     end
-    @shops_in_area = count_shop_in_area
-    @all_shop_count = Shop.where(delete_flag: false).where.not(latitude: nil, longitude:nil).count
-    # 画像パスを取得(本番環境ではDropboxから取得)
-    client = new_dropbox_client if Rails.env.production?
-    @image1_path = (Rails.env.production?) ? client.media(@shop.image1_filename)['url'] : @shop.image1.url if @shop.image1.url.present?
-    @image2_path = (Rails.env.production?) ? client.media(@shop.image2_filename)['url'] : @shop.image2.url if @shop.image2.url.present?
-    @image3_path = (Rails.env.production?) ? client.media(@shop.image3_filename)['url'] : @shop.image3.url if @shop.image3.url.present?
   end
 
   def edit
@@ -83,14 +87,26 @@ class ShopsController < ApplicationController
       @shop = Shop.find(params[:id])
     end
 
-    def count_shop_in_area
-      shops_in_area = {}
+    # 地域検索の情報(地域名、店舗数)を取得するメソッド
+    def get_area_search_info
+      area_search_info = {}
       areas = Shop.select(:area).uniq
       areas.each do |area|
         shop_count = Shop.where(delete_flag: false, area: area.area).count
-        shops_in_area[area.area] = shop_count
+        area_search_info[area.area] = shop_count
       end
-      shops_in_area.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }
-      shops_in_area
+      area_search_info.sort {|(k1, v1), (k2, v2)| v2 <=> v1 }
+      area_search_info
+    end
+
+    # ジャンル検索の情報(ジャンル名、店舗数)を取得するメソッド
+    def get_genre_tag_search_info
+      genre_tag_search_info = {}
+      genre_tags = GenreTag.all
+      genre_tags.each do |genre_tag|
+        shop_count = ShopsGenreTag.where(genre_tag_id: genre_tag.id).count
+        genre_tag_search_info[genre_tag.tag_name] = shop_count
+      end
+      genre_tag_search_info
     end
 end

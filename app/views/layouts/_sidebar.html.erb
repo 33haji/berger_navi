@@ -1,11 +1,24 @@
-<div id ="sidebar" class="sidebar">
+<div id ="sidebar-area" class="sidebar">
   <!-- エリアごとの検索用 -->
   <h3 class="sidebar-title"><a href="/"><span class="glyphicon glyphicon-map-marker"></span> エリア</a></h3>
-  <div id="sidebar-content">
-    <% @shops_in_area.each do |shop_hash| %>
+  <div id="sidebar-area-content">
+    <% @area_search_info.each do |shop_hash| %>
       <a href="/?area=<%= shop_hash.first %>">
         <div class="column">
           <%= shop_hash.first %> (<%= shop_hash.second %>)
+        </div>
+      </a>
+    <% end %>
+  </div>
+</div>
+<div id ="sidebar-genre" class="sidebar">
+  <!-- ジャンルごとの検索用 -->
+  <h3 class="sidebar-title"><a href="/"><span class="glyphicon glyphicon-cutlery"></span> ジャンル</a></h3>
+  <div id="sidebar-genre-content">
+    <% @genre_tag_search_info.each do |genre_info| %>
+      <a href="/?genre_tag=<%= genre_info.first %>">
+        <div class="column">
+          <%= genre_info.first %> (<%= genre_info.second %>)
         </div>
       </a>
     <% end %>

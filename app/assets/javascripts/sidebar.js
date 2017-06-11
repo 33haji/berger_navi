@@ -1,9 +1,17 @@
 // サイドバーの検索リストをプルダウン表示する
 $(document).on('turbolinks:load', function(){
-  $("#sidebar-content").hide();
-  $("#sidebar").hover(function(){
-      $("#sidebar-content:not(:animated)").slideDown();
+  $("#sidebar-area-content").hide();
+  $("#sidebar-area").hover(function(){
+      $("#sidebar-area-content:not(:animated)").slideDown();
     },function(){
-      $("#sidebar-content").slideUp();
+      $("#sidebar-area-content").slideUp();
+    });
+});
+$(document).on('turbolinks:load', function(){
+  $("#sidebar-genre-content").hide();
+  $("#sidebar-genre").hover(function(){
+      $("#sidebar-genre-content:not(:animated)").slideDown();
+    },function(){
+      $("#sidebar-genre-content").slideUp();
     });
 });
