@@ -85,4 +85,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.force_ssl = true
+
+  # Google AnalyticsのトラッキングID
+  GA.tracker = "UA-101049196-1"
 end
