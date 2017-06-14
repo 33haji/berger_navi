@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= full_title(yield(:title)) %></title>
+    <%
+     set_meta_tags :site => '厳選バンバーガーマガジン',
+                   :description => '厳選ハンバーガーを紹介するグルメナビサイト。各地域で美味しいハンバーガーをランキングし、値段や地図に加えておしゃれさや店員の態度などの情報を提供。',
+                   :keywords => 'ハンバーガー, humberger, HUMNAVI, 池袋, Ikebukuro, グルメ, 厳選, 厳選ハンバーガー',
+                   :canonical => request.original_url,
+                   :reverse => true
+    %>
+    <%= display_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>

@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <% provide(:title, 'Columns') %>
+  <% set_meta_tags :title => 'Columns', :reverse => true %>
   <div class="container">
     <h1>Column一覧 [ <%= @table_name %> ]</h1>
 

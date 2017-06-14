@@ -52,6 +52,8 @@ gem 'dropbox-sdk'
 gem 'figaro'
 # Google Anayticsを使うためのgem
 gem 'google-analytics-rails'
+# SEO対策
+gem 'meta-tags'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
