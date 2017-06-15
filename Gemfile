@@ -54,6 +54,7 @@ gem 'figaro'
 gem 'google-analytics-rails'
 # SEO対策
 gem 'meta-tags'
+gem 'sitemap_generator'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
