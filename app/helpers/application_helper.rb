@@ -55,6 +55,11 @@ module ApplicationHelper
 
   # spページに変換するためのメソッド
   def check_sp_user
-    request.variant = :sp if request.user_agent.include?('Mobile') || request.user_agent.include?('Android')
+    request.variant = :sp if is_sp_device?
+  end
+
+  # spページかどうかを判断するメソッド
+  def is_sp_device?
+    request.user_agent.include?('Mobile') || request.user_agent.include?('Android')
   end
 end
