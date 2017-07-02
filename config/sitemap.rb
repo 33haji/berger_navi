@@ -1,6 +1,7 @@
 # Set the host name for URL creation
 SitemapGenerator::Sitemap.default_host = "https://berger-navi.herokuapp.com/"
 SitemapGenerator::Sitemap.sitemaps_path = 'sitemaps/'
+SitemapGenerator::Sitemap.public_path   = 'public/'
 
 SitemapGenerator::Sitemap.create do
   # Put links creation logic here.
